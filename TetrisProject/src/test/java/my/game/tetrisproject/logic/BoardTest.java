@@ -56,13 +56,7 @@ public class BoardTest {
     public void blockFalls() {
         assertTrue(board.hasFalling());
     }
-
-    @Test
-    public void getRightCoordsFromBlock() {
-        assertEquals(block.getX(), 2);
-        assertEquals(block.getY(), 3);
-    }
-
+    
     @Test
     public void blockIsDroppedInTheMiddle() {
         assertEquals(""

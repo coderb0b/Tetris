@@ -1,2 +1,5 @@
-# Tetris
-Work in progress..
+Tetris
+======
+Dokumentaatio
+-------------
+
