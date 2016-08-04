@@ -5,4 +5,4 @@ Tetris-palikoita kutsutaan tetrominoiksi ja nämä koostuvat neljästä neliön 
 
 **Käyttäjät:** kaikki pulmapeleistä kiinnostuneet.
 
-
+![Luokkakaavio](/dokumentaatio/Luokkakaavio_ver1.png)
