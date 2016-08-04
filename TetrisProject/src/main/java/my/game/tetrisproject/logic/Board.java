@@ -5,21 +5,25 @@ import my.game.tetrisproject.domain.Block;
 
 public class Board {
 
-    private final char[][] stationaryBlocks;
+    private final char[][] stationaryBlocks; //tallettaa perille tulleet palat
     private final int rows;
     private final int columns;
 
     private Block falling;
-    private int fallingBlockRow = 0;
-    private int fallingBlockColumn = 1;
+    private int fallingBlockRow;
+    private int fallingBlockColumn;
 
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
+
+        this.fallingBlockRow = 0;
+        this.fallingBlockColumn = 1;
         this.stationaryBlocks = emptyBoard(rows, columns);
 
     }
 
+    //Piirretään . kentän tyhjiin kohtiin
     private static char[][] emptyBoard(int rows, int columns) {
         char[][] board = new char[rows][columns];
         for (char[] row : board) {
@@ -36,7 +40,7 @@ public class Board {
         String s = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                //Tetrominon lokaatio
+                //Palan lokaatio
                 s += blockLocation(row, col);
             }
             s += "\n";
@@ -73,16 +77,40 @@ public class Board {
     public void drop(Block block) {
 
         this.falling = block;
+
+        this.fallingBlockRow = 0;
+        this.fallingBlockColumn = 1;
+    }
+
+    private void stopBlock() {
+        stationaryBlocks[fallingBlockRow][fallingBlockColumn] = falling.getColor();
+        falling = null;
     }
 
     public void tick() {
-        if (fallingBlockRow == this.rows - 1) {
-            stationaryBlocks[fallingBlockRow][fallingBlockColumn] = falling.getColor();
-            falling = null;
-        } else {
-            fallingBlockRow++;
-        }
+        //Jos kentällä ei ole putoavaa palaa, niin ei yritetä edetä
+        if (hasFalling()) {            
+            //Jos pohja tulee vastaan, niin pysäytetään palikka
+            if (blockHitsFloor()) {
+                stopBlock();
+            } else {
+                //Jos toinen pala tulee vastaan, niin pysäytetään palikka
+                if (blockHitsAnotherBlock()) {
+                    fallingBlockRow++;
+                } else {
+                    stopBlock();
+                }
 
+            }
+        }
+    }
+    
+    private boolean blockHitsFloor() {
+        return fallingBlockRow == this.rows - 1;
+    }
+    
+    private boolean blockHitsAnotherBlock() {
+        return stationaryBlocks[fallingBlockRow + 1][fallingBlockColumn] == '.';
     }
 
 }

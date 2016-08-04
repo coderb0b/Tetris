@@ -56,7 +56,7 @@ public class BoardTest {
     public void blockFalls() {
         assertTrue(board.hasFalling());
     }
-    
+
     @Test
     public void blockIsDroppedInTheMiddle() {
         assertEquals(""
@@ -86,6 +86,37 @@ public class BoardTest {
                 + "...\n"
                 + "...\n"
                 + ".X.\n", board.toString());
+    }
+
+    @Test
+    public void blockStopsAtAnotherBlock() {
+        board.tick();
+        board.tick();
+        board.tick();
+        board.tick();
+
+        assertEquals(""
+                + "...\n"
+                + "...\n"
+                + ".X.\n", board.toString());
+        assertFalse(board.hasFalling());
+
+        board.drop(new Block(1, 1, 'O'));
+
+        assertEquals(""
+                + ".O.\n"
+                + "...\n"
+                + ".X.\n", board.toString());
+
+        board.tick();
+        board.tick();
+
+        assertEquals(""
+                + "...\n"
+                + ".O.\n"
+                + ".X.\n", board.toString());
+        assertFalse(board.hasFalling());
+
     }
 
 }
