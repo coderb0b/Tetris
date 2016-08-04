@@ -2,4 +2,5 @@ Tetris
 ======
 Dokumentaatio
 -------------
-[Tetris](dokumentaatio/aiheenKuvausJaRakenne.md)
+- [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+- [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
