@@ -5,6 +5,8 @@ package my.game.tetrisproject.domain;
 
 public class Block {
 
+    //Palan sijaintikoordinaatit tod.näk. turhia täällä palikassa
+    //poistetaan
     private int x;
     private int y;
     private char color;

@@ -74,6 +74,7 @@ public class Board {
         return falling != null;
     }
 
+    //Pala pudotetaan keskeltä ruutua
     public void drop(Block block) {
 
         this.falling = block;

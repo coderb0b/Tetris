@@ -1,6 +1,7 @@
 package my.game.tetrisproject.logic;
 
 import my.game.tetrisproject.domain.Block;
+import my.game.tetrisproject.domain.Piece;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
