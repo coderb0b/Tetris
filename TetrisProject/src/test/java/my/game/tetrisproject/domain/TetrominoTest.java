@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 
 public class TetrominoTest {
-
-    private Tetromino shape;
+    
+    private Tetromino tetro = new Tetromino('I');
 
     public TetrominoTest() {
     }
@@ -26,30 +26,35 @@ public class TetrominoTest {
     //Luodaan haluttu Tetromino
     @Before
     public void setUp() {
-        this.shape = Tetromino.I;
+        
+       //Tetromino tetro = new Tetromino('I');
+
     }
 
     @After
     public void tearDown() {
     }
+    
+    
+    @Test
+    public void returnsRightCoordinates() {        
+        //for (int i= 0; i< tetro.getBlocks().size(); i++) {
+            //System.out.println(tetro.getBlocks().get(i).getX() + "     ytrewrtyyyy   " + tetro.getBlocks().get(i).getY());
+            
+            assertEquals(tetro.getBlocks().get(0).getX(), 0);
+            assertEquals(tetro.getBlocks().get(0).getY(), -1);
+            
+            assertEquals(tetro.getBlocks().get(1).getX(), 0);
+            assertEquals(tetro.getBlocks().get(1).getY(), 0);
+            
+            assertEquals(tetro.getBlocks().get(2).getX(), 0);
+            assertEquals(tetro.getBlocks().get(2).getY(), 1);
+            
+            assertEquals(tetro.getBlocks().get(3).getX(), 0);
+            assertEquals(tetro.getBlocks().get(3).getY(), 2);
+        //}
+    }
 
-    @Test
-    public void hasCorrectShape() {
-        assertEquals(""                
-                + "....\n"
-                + "IIII\n"
-                + "....\n"
-                + "....\n", shape.toString());
-    }
-    @Ignore
-    @Test
-    public void rotateRight() {
-        this.shape.rotateRight();
-        assertEquals(""                
-                + "..I.\n"
-                + "..I.\n"
-                + "..I.\n"
-                + "..I.\n", shape.toString());
-    }
+    
 
 }

@@ -2,12 +2,16 @@ package my.game.tetrisproject.logic;
 
 import java.util.Arrays;
 import my.game.tetrisproject.domain.Block;
+import my.game.tetrisproject.domain.Tetromino;
 
 public class Board {
 
     private final char[][] stationaryBlocks; //tallettaa perille tulleet palat
     private final int rows;
     private final int columns;
+    
+    private Tetromino tetro = new Tetromino('I');
+    
 
     private Block falling;
     private int fallingBlockRow;

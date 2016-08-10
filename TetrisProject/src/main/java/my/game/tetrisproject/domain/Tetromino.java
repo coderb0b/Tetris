@@ -1,64 +1,36 @@
-
 package my.game.tetrisproject.domain;
 
+import java.util.ArrayList;
+
 public class Tetromino {
-    
-    private String shape;
-    
-    public static Tetromino I = new Tetromino("" +
-                    "....\n" +
-                    "IIII\n" +
-                    "....\n" +
-                    "....\n");
-    
-    public static Tetromino J = new Tetromino("" +
-                    ".I..\n" +
-                    ".III\n" +
-                    "....\n" +
-                    "....\n");
-    
-    public static Tetromino L = new Tetromino("" +
-                    "....\n" +
-                    ".III\n" +
-                    ".I..\n" +
-                    "....\n");
-    
-    public static Tetromino O = new Tetromino("" +
-                    ".II.\n" +
-                    ".II.\n" +
-                    "....\n" +
-                    "....\n");
-    
-    public static Tetromino S = new Tetromino("" +
-                    "..II\n" +
-                    ".II.\n" +
-                    "....\n" +
-                    "....\n");
-    
-    public static Tetromino Z = new Tetromino("" +
-                    "II..\n" +
-                    ".II.\n" +
-                    "....\n" +
-                    "....\n");
-    
-    public static Tetromino T = new Tetromino("" +
-                    "..I.\n" +
-                    ".III\n" +
-                    "....\n" +
-                    "....\n");
-    
-    
-    public Tetromino(String shape) {
-        this.shape = shape;
+
+    private ArrayList<Block> blocks = new ArrayList<Block>();
+    //Tetrominon leveys ja korkeus
+    private int width;
+    private int heigth;
+
+    public Tetromino(char shape) {
+        switch (shape) {
+            case 'I':
+                tetrominoL();
+        }
+
     }
-    
-    @Override   
-    public String toString() {
-        return this.shape;
+
+    private Block createBlock(int x, int y, char color) {
+        Block block = new Block(x, y, color);
+        return block;
     }
-    
-    public void rotateRight() {
-        
+
+    private void tetrominoL() {
+        //Käytetään toistaiseksi värille vain kirjainta
+        blocks.add(createBlock(0, -1, 'Y'));
+        blocks.add(createBlock(0, 0, 'Y'));
+        blocks.add(createBlock(0, 1, 'Y'));
+        blocks.add(createBlock(0, 2, 'Y'));
     }
-    
+
+    public ArrayList<Block> getBlocks() {
+        return this.blocks;
+    }
 }
