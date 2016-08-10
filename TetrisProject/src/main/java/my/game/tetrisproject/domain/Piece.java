@@ -2,7 +2,7 @@ package my.game.tetrisproject.domain;
 
 public class Piece {
 
-    private final char[][] blocks; //Kaksiulotteinen taulukko kuvaa Tetrominopalaa, taulukossa oleva String kuvaa palanmuotoa.
+    private final char[][] blocks; //Kaksiulotteinen taulukko kuvaa Tetrominopalaa
     //private final String shape;
 
     public Piece(String shape) {
@@ -35,7 +35,7 @@ public class Piece {
     }
 
     //blocks taulukko kopioidaan uuteen taulukkoon rotated
-    // 90 astetta myötäpäivään
+    //käännetään 90 astetta myötäpäivään
     public Piece rotateRight() {
         char[][] rotated = new char[blocks.length][blocks.length];
 
