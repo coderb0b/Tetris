@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 import org.junit.Ignore;
 
 public class TetrominoTest {
-    
-    private Tetromino tetro = new Tetromino('I');
+
+    private Tetromino tetroI = new Tetromino('I');
 
     public TetrominoTest() {
     }
@@ -26,35 +26,73 @@ public class TetrominoTest {
     //Luodaan haluttu Tetromino
     @Before
     public void setUp() {
-        
-       //Tetromino tetro = new Tetromino('I');
 
+        //Tetromino tetroL = new Tetromino('I');
     }
 
     @After
     public void tearDown() {
     }
+
+    @Test
+    public void returnsRightCoordinates() {
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+
+        assertEquals(tetroI.getBlocks().get(0).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(0).getY(), -1);
+
+        assertEquals(tetroI.getBlocks().get(1).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(1).getY(), 0);
+
+        assertEquals(tetroI.getBlocks().get(2).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(2).getY(), 1);
+
+        assertEquals(tetroI.getBlocks().get(3).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(3).getY(), 2);
+
+    }
+
+    @Test
+    public void returnsRightCoordinatesWhenNewTetromino() {
+
+        this.tetroI.setTetrominoShape('L');
+        assertEquals(4, this.tetroI.getBlocks().size());
+
+        assertEquals(tetroI.getBlocks().get(0).getX(), -1);
+        assertEquals(tetroI.getBlocks().get(0).getY(), -1);
+
+        assertEquals(tetroI.getBlocks().get(1).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(1).getY(), -1);
+
+        assertEquals(tetroI.getBlocks().get(2).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(2).getY(), 0);
+
+        assertEquals(tetroI.getBlocks().get(3).getX(), 0);
+        assertEquals(tetroI.getBlocks().get(3).getY(), 1);
+
+    }
     
     
     @Test
-    public void returnsRightCoordinates() {        
-        //for (int i= 0; i< tetro.getBlocks().size(); i++) {
-            //System.out.println(tetro.getBlocks().get(i).getX() + "     ytrewrtyyyy   " + tetro.getBlocks().get(i).getY());
-            
-            assertEquals(tetro.getBlocks().get(0).getX(), 0);
-            assertEquals(tetro.getBlocks().get(0).getY(), -1);
-            
-            assertEquals(tetro.getBlocks().get(1).getX(), 0);
-            assertEquals(tetro.getBlocks().get(1).getY(), 0);
-            
-            assertEquals(tetro.getBlocks().get(2).getX(), 0);
-            assertEquals(tetro.getBlocks().get(2).getY(), 1);
-            
-            assertEquals(tetro.getBlocks().get(3).getX(), 0);
-            assertEquals(tetro.getBlocks().get(3).getY(), 2);
-        //}
-    }
+    public void rotatesRight() {
 
-    
+        this.tetroI.setTetrominoShape('L');
+        
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+        
+        System.out.println("\n");
+        tetroI.rotateRight();
+        
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+        
+        
+
+    }
 
 }
