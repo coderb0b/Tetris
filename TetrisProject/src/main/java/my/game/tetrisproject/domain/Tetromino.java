@@ -58,18 +58,27 @@ public class Tetromino {
 
     public Tetromino rotateRight() {
         //kesken...
-        
-        for (int i = 0; i < this.blocks.size(); i++) {
-            this.blocks.get(i).setX(-this.blocks.get(i).getY());
-            this.blocks.get(i).setY(this.blocks.get(i).getX());
 
+        int xNew;
+        int yNew;
+
+        for (int i = 0; i < this.blocks.size(); i++) {
+            
+            xNew = this.blocks.get(i).getY();
+            yNew = -this.blocks.get(i).getX();
+            
+            this.blocks.get(i).setX(xNew);
+            this.blocks.get(i).setY(yNew);
+
+             //this.blocks.get(i).setX(-this.blocks.get(i).getY());
+            //this.blocks.get(i).setY(this.blocks.get(i).getX());
         }
 
         /*
          xNew = -y
          yNew = x
          
-        */
+         */
         return this;
     }
 

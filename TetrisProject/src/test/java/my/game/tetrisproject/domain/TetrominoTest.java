@@ -36,10 +36,10 @@ public class TetrominoTest {
 
     @Test
     public void returnsRightCoordinates() {
-        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+/*        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
             System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
         }
-
+*/
         assertEquals(tetroI.getBlocks().get(0).getX(), 0);
         assertEquals(tetroI.getBlocks().get(0).getY(), -1);
 
