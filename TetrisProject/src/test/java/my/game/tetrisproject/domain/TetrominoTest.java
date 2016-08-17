@@ -36,10 +36,10 @@ public class TetrominoTest {
 
     @Test
     public void returnsRightCoordinates() {
-/*        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
-            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
-        }
-*/
+        /*        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+         System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+         }
+         */
         assertEquals(tetroI.getBlocks().get(0).getX(), 0);
         assertEquals(tetroI.getBlocks().get(0).getY(), -1);
 
@@ -73,25 +73,70 @@ public class TetrominoTest {
         assertEquals(tetroI.getBlocks().get(3).getY(), 1);
 
     }
-    
-    
+
+    @Test
+    public void returnsRightShapeChar() {
+
+        this.tetroI.setTetrominoShape('L');
+        assertEquals('L', tetroI.getShape());
+
+    }
+
     @Test
     public void rotatesRight() {
 
-        this.tetroI.setTetrominoShape('L');
-        
+        this.tetroI.setTetrominoShape('T');
+
         for (int i = 0; i < tetroI.getBlocks().size(); i++) {
             System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
         }
-        
+
         System.out.println("\n");
         tetroI.rotateRight();
-        
+
         for (int i = 0; i < tetroI.getBlocks().size(); i++) {
             System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
         }
-        
-        
+
+        System.out.println("\n");
+
+    }
+
+    @Test
+    public void doNotRotateRightIfShapeO() {
+
+        this.tetroI.setTetrominoShape('O');
+
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+
+        System.out.println("\n");
+        tetroI.rotateRight();
+
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+        System.out.println("\n");
+    }
+
+    @Test
+    public void rotatesLeft() {
+
+        this.tetroI.setTetrominoShape('T');
+
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+
+        System.out.println("\n");
+        tetroI.rotateLeft();
+
+        for (int i = 0; i < tetroI.getBlocks().size(); i++) {
+            System.out.println(tetroI.getBlocks().get(i).getX() + "  LOLOLOLOLOL   " + tetroI.getBlocks().get(i).getY());
+        }
+
+        System.out.println("\n");
 
     }
 
