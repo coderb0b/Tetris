@@ -25,8 +25,8 @@ public class KeyboardListener implements KeyListener {
             this.tetro.setDir(Direction.DOWN);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             this.tetro.setDir(Direction.RIGHT);
-        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.tetro.setDir(Direction.RIGHT);
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            this.tetro.setDir(Direction.LEFT);
         }
     }
 

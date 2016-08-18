@@ -12,7 +12,7 @@ public class Tetromino {
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
         setTetrominoShape(shape);
-        
+
         this.direction = direction.DOWN;
 
     }
@@ -39,11 +39,11 @@ public class Tetromino {
                 break;
         }
     }
-    
+
     public Direction getDir() {
         return this.direction;
     }
-    
+
     public Direction setDir(Direction newDir) {
         return this.direction = newDir;
     }
@@ -117,7 +117,7 @@ public class Tetromino {
     }
 
     public Tetromino rotateRight() {
-        
+
         //ei kierretä neliö Tetrominoa
         if (this.shape == 'O') {
             return this;
@@ -138,9 +138,9 @@ public class Tetromino {
 
         return this;
     }
-    
+
     public Tetromino rotateLeft() {
-        
+
         //ei kierretä neliö Tetrominoa
         if (this.shape == 'O') {
             return this;
