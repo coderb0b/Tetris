@@ -8,11 +8,15 @@ public class Tetromino {
     private ArrayList<Block> blocks;
     private char shape;
     private Direction direction;
+    private int tetroX;
+    private int tetroY;
 
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
         setTetrominoShape(shape);
-
+        
+        this.tetroX = 0;
+        this.tetroY = 0;
         this.direction = direction.DOWN;
 
     }
@@ -42,6 +46,14 @@ public class Tetromino {
 
     public Direction getDir() {
         return this.direction;
+    }
+    
+    public int getTetroX() {
+        return this.tetroX;
+    }
+    
+    public int getTetroY() {
+        return this.tetroY;
     }
 
     public Direction setDir(Direction newDir) {
