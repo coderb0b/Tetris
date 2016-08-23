@@ -8,7 +8,7 @@ import my.game.tetrisproject.domain.Tetromino;
 public class Board {
 
     // Boardin sisältämät Blocksit
-    private final char[][] boardBlocks;
+    private char[] boardBlocks;
 
     private final int width;
     private final int height;
@@ -23,9 +23,15 @@ public class Board {
         this.height = height;
         this.width = width;
 
-        this.boardBlocks = new char[height][width]; //Standard size 22 X 10
+        //this.boardBlocks = new Block[height][width]; //Standard size 22 X 10
+        this.boardBlocks = new char[width * height];
+        createBoard();
         newPiece(); //luodaan uusi random Tetromino
 
+    }
+
+    private char getShapeFromBoard(int x, int y) {
+        return boardBlocks[(y * width) + x];
     }
 
     public Tetromino getCurrentTetro() {
@@ -40,24 +46,43 @@ public class Board {
         return this.width;
     }
 
+    public char[] getBoard() {
+        return this.boardBlocks;
+    }
+
     private void newPiece() {
         String muodot = "ILZSTO";
         Random r = new Random();
         this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
+        
+        int minY = current.getBlocks().get(0).getY();
+        for (int i = 0; i < 4; i++) {
+            minY = Math.min(minY, current.getBlocks().get(i).getY());
+        }
+        
         curX = width / 3;
-        curY = height - 1;
+        curY = height - 1 + minY;
+    }
+    
+    //Alustetaan lauta
+    private void createBoard() {
+        for (int i = 0; i < height * width; i++) {
+            this.boardBlocks[i] = 'X';
+        }
+        
     }
 
-    public void addToBoard(Tetromino t) {
-        isFallingStarted = false;
+    public void addToBoard() {
+        //isFallingStarted = false;
 
-        for (int i = 0; i < t.getBlocks().size(); i++) {
-            // Blockin x/y arvot asetetaan boardBlocksiin
-            int x = t.getBlocks().get(i).getX();
-            int y = t.getBlocks().get(i).getY();
+        //int x = t.getBlocks().get(i).getX();
+        //int y = t.getBlocks().get(i).getY();
+        for (int i = 0; i < this.current.getBlocks().size(); i++) {
+            
+            int x = curX + this.current.getBlocks().get(i).getX();
+            int y = curY - this.current.getBlocks().get(i).getY();
 
-            this.boardBlocks[x][y] = t.getShape();
-
+            this.boardBlocks[y * width + x] = this.current.getShape();
         }
 
     }

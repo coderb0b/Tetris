@@ -14,7 +14,7 @@ public class Tetromino {
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
         setTetrominoShape(shape);
-        
+
         this.tetroX = 0;
         this.tetroY = 0;
         this.direction = direction.DOWN;
@@ -41,17 +41,20 @@ public class Tetromino {
             case 'O':
                 tetrominoO();
                 break;
+            case 'X': //empty shape
+                tetrominoX();
+                break;
         }
     }
 
     public Direction getDir() {
         return this.direction;
     }
-    
+
     public int getTetroX() {
         return this.tetroX;
     }
-    
+
     public int getTetroY() {
         return this.tetroY;
     }
@@ -122,6 +125,11 @@ public class Tetromino {
         blocks.add(createBlock(1, 0, 'M'));
         blocks.add(createBlock(0, 1, 'M'));
         blocks.add(createBlock(1, 1, 'M'));
+    }
+
+    private void tetrominoX() {
+        emptyBlocks();
+        this.shape = 'X';
     }
 
     public ArrayList<Block> getBlocks() {
