@@ -58,6 +58,14 @@ public class Tetromino {
     public int getTetroY() {
         return this.tetroY;
     }
+    
+    public void setTetroX(int x) {
+        this.tetroX = x;
+    }
+
+    public void setTetroY(int y) {
+        this.tetroY = y;
+    }
 
     public Direction setDir(Direction newDir) {
         return this.direction = newDir;

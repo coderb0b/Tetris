@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class BoardTest {
@@ -28,8 +29,8 @@ public class BoardTest {
 
     @Before
     public void setUp() {
-        this.board = new Board(22, 10);
-        this.tetro = new Tetromino('L');
+        this.board = new Board(22, 10); //leveys x korkeus
+        this.tetro = new Tetromino('Z');
     }
 
     @Before
@@ -55,18 +56,25 @@ public class BoardTest {
     @Test
     public void returnBoardState() {
         this.board.addToBoard();
-        char b[] = this.board.getBoard();
-        
-        //System.out.println(b.toString());
-        //System.out.println(b.toString() + "      mitäs");
+        char b[][] = this.board.getBoard();
 
         for (int i = 0; i < b.length; i++) {
-            System.out.println(b[i]);
+            for (int j = 0; j < b[i].length; j++) {
+                System.out.print(b[i][j]);
+
+            }
+            System.out.println();
         }
 
-            
+    }
 
-        
+    @Test
+    public void returnShapeFromCoords() {
+
+        this.board.addToBoard();
+        char b[][] = this.board.getBoard();
+
+        System.out.println("Muoto:  " + this.board.getShapeFromBoard(21, 3));
 
     }
 

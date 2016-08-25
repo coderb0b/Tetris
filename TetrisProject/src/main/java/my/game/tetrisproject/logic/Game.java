@@ -7,12 +7,14 @@ public class Game {
     
     private Board board;
     
-    public Game(Board b) {
-        this.board = b;
+    public Game() {
+        this.board = new Board(22, 10);
     }
     
     public Board getBoard() {
         return this.board;
     }
+    
+    
     
 }
