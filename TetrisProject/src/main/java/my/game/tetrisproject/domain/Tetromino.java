@@ -10,6 +10,7 @@ public class Tetromino {
     private Direction direction;
     private int tetroX;
     private int tetroY;
+    
 
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
@@ -20,6 +21,8 @@ public class Tetromino {
         this.direction = direction.DOWN;
 
     }
+    
+    
 
     public void setTetrominoShape(char shape) {
         switch (shape) {
@@ -192,6 +195,12 @@ public class Tetromino {
 
     public char getShape() {
         return this.shape;
+    }
+    
+    public void down() {
+        for (int i = 0; i < this.blocks.size(); i++) {
+            
+        }
     }
 
 }

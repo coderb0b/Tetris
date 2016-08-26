@@ -15,6 +15,7 @@ public class BoardTest {
 
     private Board board;
     private Tetromino tetro;
+    private Game peli;
 
     public BoardTest() {
     }
@@ -29,7 +30,8 @@ public class BoardTest {
 
     @Before
     public void setUp() {
-        this.board = new Board(22, 10); //leveys x korkeus
+        this.peli = new Game();
+        this.board = this.peli.getBoard();
         this.tetro = new Tetromino('Z');
     }
 
@@ -40,6 +42,18 @@ public class BoardTest {
 
     @After
     public void tearDown() {
+    }
+    
+    private void drawBoard() {
+        char b[][] = this.peli.getBoard().getBoardState();
+
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                System.out.print(b[i][j]);
+
+            }
+            System.out.println();
+        }
     }
 
     @Test
@@ -52,30 +66,33 @@ public class BoardTest {
     public void returnCorrectRandomTetro() {
         System.out.println(this.board.getCurrentTetro().getShape());
     }
-
+/*
     @Test
     public void returnBoardState() {
         this.board.addToBoard();
-        char b[][] = this.board.getBoard();
-
-        for (int i = 0; i < b.length; i++) {
-            for (int j = 0; j < b[i].length; j++) {
-                System.out.print(b[i][j]);
-
-            }
-            System.out.println();
-        }
+        drawBoard();
 
     }
-
+*/
     @Test
     public void returnShapeFromCoords() {
 
         this.board.addToBoard();
-        char b[][] = this.board.getBoard();
+        char b[][] = this.board.getBoardState();
+        //drawBoard();
 
-        System.out.println("Muoto:  " + this.board.getShapeFromBoard(21, 3));
+        System.out.println("Muoto:  " + this.board.getShapeFromBoard(3, 20));
 
+    }
+    
+    @Test
+    public void movingDown(){
+        this.board.addToBoard();
+        drawBoard();
+        peli.moveDown();
+        System.out.println("siirto");
+        drawBoard();
+        
     }
 
 }

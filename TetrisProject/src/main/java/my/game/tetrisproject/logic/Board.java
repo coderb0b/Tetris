@@ -13,10 +13,11 @@ public class Board {
 
     private final int width;
     private final int height;
-    private Tetromino current;
-    //Tetromino palan sijainti laudalla.
-    int curX = 0;
-    int curY = 0;
+
+    private Tetromino current; //Laudalla aktiivinen Tetromino    
+    int curX = 0; //Tetromino palan x-koordinaatti.
+    int curY = 0; //Tetromino palan y-koordinaatti.
+
     boolean isFallingFinnished = false;
     boolean isFallingStarted = false;
 
@@ -26,14 +27,16 @@ public class Board {
 
         //this.boardBlocks = new Block[height][width]; //Standard size 22 X 10
         //*this.boardBlocks = new char[width * height];
-        
         newPiece(); //luodaan uusi random Tetromino
         this.isFallingStarted = true;
-        this.boardCoords = new char[width][height];
+        this.boardCoords = new char[height][width];
         resetBoard(); //luodaan Board tyhjillä muodoilla
 
     }
 
+    /**
+     * Palautetaan laudan sisältö halutusta koordinaatista
+     */
     public char getShapeFromBoard(int x, int y) {
         return boardCoords[y][x];
     }
@@ -50,16 +53,18 @@ public class Board {
         return this.width;
     }
 
-    public char[][] getBoard() {
+    public char[][] getBoardState() {
         return this.boardCoords;
     }
 
-    private void newPiece() {
+    public void newPiece() {
         String muodot = "ILZSTO";
         Random r = new Random();
         //this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
         this.current = new Tetromino('I');
+        this.isFallingStarted = true;
 
+        //minY Tetrominon pienin y-koordinaatin arvo suhteessa itseensä
         int minY = current.getBlocks().get(0).getY();
         for (int i = 0; i < 4; i++) {
             minY = Math.min(minY, current.getBlocks().get(i).getY());
@@ -68,17 +73,20 @@ public class Board {
         curX = width / 3;
         curY = height - 1 + minY;
     }
-        
-     //Alustetaan lauta
-     private void resetBoard() {
-     for (int i = 0; i < this.boardCoords.length; i++) {
-         for (int j = 0; j < this.boardCoords[i].length; j++) {
-             this.boardCoords[i][j] = 'X';
-         }
-     }
-        
-     }
-     
+
+    /**
+     * Alustetaan lauta, tyhjät ruudut merkataan 'X' charilla.
+     */
+    private void resetBoard() {
+        for (int i = 0; i < this.boardCoords.length; i++) {
+            for (int j = 0; j < this.boardCoords[i].length; j++) {
+                this.boardCoords[i][j] = 'X';
+
+            }
+        }
+
+    }
+
     /*
      public void addToBoard() {
      //isFallingStarted = false;
@@ -95,30 +103,17 @@ public class Board {
 
      }
      */
-
     public void addToBoard() {
 
         for (Block b : this.current.getBlocks()) {
             int x = curX + b.getX();
             int y = curY - b.getY();
-            boardCoords[x][y] = this.current.getShape();
-        }
-    }
-    
-    private boolean tryMove(int x, int y) {
-        for (int i = 0; i < this.current.getBlocks().size(); i++) {
-            
-            int nextX = x + this.current.getBlocks().get(i).getX();
-            int nextY = y - this.current.getBlocks().get(i).getY();
-            
-            if (nextX < 0 || x>= this.width || nextY < 0 || y>= this.height) {
-                return false;
+            if (isFallingFinnished) {
+                boardCoords[y][x] = this.current.getShape();
+            } else{
+                boardCoords[y][x] = 'F';
             }
-                
             
-            if (getShapeFromBoard(x, y)) {
-                
-            }
         }
     }
 
