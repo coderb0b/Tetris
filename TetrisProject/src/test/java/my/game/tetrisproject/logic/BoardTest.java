@@ -95,7 +95,7 @@ public class BoardTest {
         drawBoard();
         System.out.println("--------");
         
-        this.board.newPiece();
+        //this.board.newPiece();
         this.board.addToBoard();
         drawBoard();        
         peli.moveDown();

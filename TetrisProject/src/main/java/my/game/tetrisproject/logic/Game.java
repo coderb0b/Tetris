@@ -48,7 +48,7 @@ public class Game {
         }
         
 
-        this.board.newPiece();
+        //this.board.newPiece();
         this.board.getCurrentTetro().setTetroX(nextX);
         this.board.getCurrentTetro().setTetroY(nextY);
         

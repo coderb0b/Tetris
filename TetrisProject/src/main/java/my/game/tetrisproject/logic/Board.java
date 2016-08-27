@@ -27,10 +27,9 @@ public class Board {
 
         //this.boardBlocks = new Block[height][width]; //Standard size 22 X 10
         //*this.boardBlocks = new char[width * height];
-        newPiece(); //luodaan uusi random Tetromino
-        this.isFallingFinnished = false;
         this.boardCoords = new char[height][width];
         resetBoard(); //luodaan Board tyhjillä muodoilla
+        newPiece(); //luodaan uusi random Tetromino        
 
     }
 
@@ -60,8 +59,8 @@ public class Board {
     public void newPiece() {
         String muodot = "ILZSTO";
         Random r = new Random();
-        //this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
-        this.current = new Tetromino('I');
+        this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
+        //this.current = new Tetromino('I');
         this.isFallingFinnished = false;
 
         //minY Tetrominon pienin y-koordinaatin arvo suhteessa itseensä
@@ -82,7 +81,17 @@ public class Board {
         for (int i = 0; i < this.boardCoords.length; i++) {
             for (int j = 0; j < this.boardCoords[i].length; j++) {
                 this.boardCoords[i][j] = 'X';
+            }
+        }
 
+    }
+
+    private void clearFallingStatus() {
+        for (int i = 0; i < this.boardCoords.length; i++) {
+            for (int j = 0; j < this.boardCoords[i].length; j++) {
+                if (getShapeFromBoard(j, i) == 'F') {
+                    this.boardCoords[i][j] = 'X';
+                }
             }
         }
 
@@ -104,8 +113,6 @@ public class Board {
 
      }
      */
-    
-    
     /**
      * Pudotetaan tetromino laudalle
      */
@@ -116,10 +123,14 @@ public class Board {
             int y = this.current.getTetroY() - b.getY();
             if (isFallingFinnished) {
                 boardCoords[y][x] = this.current.getShape();
-            } else{
+            } else {
                 boardCoords[y][x] = 'F';
             }
-            
+
+        }
+        if (isFallingFinnished) {
+            clearFallingStatus();
+            newPiece();
         }
     }
 
