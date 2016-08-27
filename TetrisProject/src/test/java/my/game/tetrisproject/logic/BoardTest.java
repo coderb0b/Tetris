@@ -81,7 +81,7 @@ public class BoardTest {
         char b[][] = this.board.getBoardState();
         //drawBoard();
 
-        System.out.println("Muoto:  " + this.board.getShapeFromBoard(3, 20));
+        System.out.println("Muoto:  " + this.board.getShapeFromBoard(3, 0));
 
     }
     
@@ -91,6 +91,14 @@ public class BoardTest {
         drawBoard();
         peli.moveDown();
         System.out.println("siirto");
+        drawBoard();
+        System.out.println("--------");
+        
+        this.board.newPiece();
+        this.board.addToBoard();
+        drawBoard();        
+        peli.moveDown();
+        System.out.println("siirto2");
         drawBoard();
         
     }

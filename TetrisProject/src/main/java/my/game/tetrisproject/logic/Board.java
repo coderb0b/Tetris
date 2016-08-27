@@ -19,7 +19,7 @@ public class Board {
     int curY = 0; //Tetromino palan y-koordinaatti.
 
     boolean isFallingFinnished = false;
-    boolean isFallingStarted = false;
+    //boolean isFallingStarted = false;
 
     public Board(int height, int width) {
         this.height = height;
@@ -28,7 +28,7 @@ public class Board {
         //this.boardBlocks = new Block[height][width]; //Standard size 22 X 10
         //*this.boardBlocks = new char[width * height];
         newPiece(); //luodaan uusi random Tetromino
-        this.isFallingStarted = true;
+        this.isFallingFinnished = false;
         this.boardCoords = new char[height][width];
         resetBoard(); //luodaan Board tyhjillä muodoilla
 
@@ -62,7 +62,7 @@ public class Board {
         Random r = new Random();
         //this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
         this.current = new Tetromino('I');
-        this.isFallingStarted = true;
+        this.isFallingFinnished = false;
 
         //minY Tetrominon pienin y-koordinaatin arvo suhteessa itseensä
         int minY = current.getBlocks().get(0).getY();
@@ -70,8 +70,9 @@ public class Board {
             minY = Math.min(minY, current.getBlocks().get(i).getY());
         }
 
-        curX = width / 3;
-        curY = height - 1 + minY;
+        this.current.setTetroX(width / 3);
+        //this.current.setTetroY(height - 1 + minY);
+        this.current.setTetroY(0 + 1 - minY);
     }
 
     /**
@@ -103,11 +104,16 @@ public class Board {
 
      }
      */
+    
+    
+    /**
+     * Pudotetaan tetromino laudalle
+     */
     public void addToBoard() {
 
         for (Block b : this.current.getBlocks()) {
-            int x = curX + b.getX();
-            int y = curY - b.getY();
+            int x = this.current.getTetroX() + b.getX();
+            int y = this.current.getTetroY() - b.getY();
             if (isFallingFinnished) {
                 boardCoords[y][x] = this.current.getShape();
             } else{

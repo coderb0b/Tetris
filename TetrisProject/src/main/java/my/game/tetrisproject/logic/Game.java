@@ -42,8 +42,8 @@ public class Game {
         }
 
         this.board.newPiece();
-        this.board.curX = nextX;
-        this.board.curY = nextY;
+        this.board.getCurrentTetro().setTetroX(nextX);
+        this.board.getCurrentTetro().setTetroY(nextY);
         this.board.isFallingFinnished = true;
 
         return true;
@@ -54,16 +54,16 @@ public class Game {
      * Siirretään laudan aktiivista tetrominoa rivikerrallaan alaspäin.
      */
     public void moveDown() {
-        int nextY = this.board.curY;
+        int nextY = this.board.getCurrentTetro().getTetroY();
 
-        while (nextY > 0) {
+        while (nextY < board.getHeight()) {
             //System.out.println("uusi arvo:  " + nextY);
-            if (!tryMove(this.board.curX, nextY - 1)) {
+            if (!tryMove(this.board.getCurrentTetro().getTetroX(), nextY + 1)) {
                 break;
 
             }
 
-            --nextY;
+            ++nextY;
 
         }
         this.board.addToBoard();

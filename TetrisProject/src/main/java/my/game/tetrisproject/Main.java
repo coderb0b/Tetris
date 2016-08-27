@@ -16,8 +16,15 @@ public class Main {
         Game peli = new Game();
         TRenderer r = new TRenderer(peli.getBoard());
         
+        
         Ui UserInterface = new Ui(r);
         UserInterface.run();
+        
+        peli.getBoard().addToBoard();
+        r.update();
+        
+        
+        
     }
     
     
