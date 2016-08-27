@@ -11,10 +11,13 @@ public class TRenderer extends JPanel implements Updater {
     //Piirtoalusta
 
     private Board board;
+    private Game game;
     private int scale = 10;
 
-    public TRenderer(Board board) {
-        this.board = board;
+    public TRenderer(Game peli) {
+        this.board = peli.getBoard();
+        this.game = peli;
+        
     }
 
     @Override
@@ -58,7 +61,7 @@ public class TRenderer extends JPanel implements Updater {
 
     @Override
     public void update() {
-        repaint();
+        this.repaint();
     }
 
 }

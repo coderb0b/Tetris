@@ -85,6 +85,7 @@ public class BoardTest {
 
     }
     
+    
     @Test
     public void movingDown(){
         this.board.addToBoard();
@@ -101,6 +102,24 @@ public class BoardTest {
         System.out.println("siirto2");
         drawBoard();
         
+    }
+    @Ignore
+    @Test
+    public void moveOneDown(){
+        this.board.addToBoard();
+        drawBoard();
+        peli.moveOneDown();
+        System.out.println("siirto");
+        drawBoard();
+        System.out.println("--------");
+/*        
+        this.board.newPiece();
+        this.board.addToBoard();
+        drawBoard();        
+        peli.moveOneDown();
+        System.out.println("siirto2");
+        drawBoard();
+*/        
     }
 
 }
