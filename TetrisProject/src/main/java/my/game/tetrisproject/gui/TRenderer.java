@@ -43,7 +43,8 @@ public class TRenderer extends JPanel implements Updater {
                 char shape = this.board.getShapeFromBoard(i, j);
                 if (shape != 'X') {
                     g.setColor(Color.CYAN);
-                    g.fillRect(i * this.scale + 1, j * this.scale + 1, 20, 20);
+                    g.fillRect(i * scale + 1, j * scale + 1, scale, scale);
+                    
 
                 }
             }
@@ -54,7 +55,7 @@ public class TRenderer extends JPanel implements Updater {
                 int x = board.getCurrentTetro().getTetroX() + b.getX();
                 int y = board.getCurrentTetro().getTetroY() - b.getY();
                 g.setColor(Color.CYAN);
-                g.fillRect(x * this.scale + 1, y * this.scale + 1, 20, 20);
+                g.fillRect(x * scale + 1, y * scale + 1, scale, scale);
             }
         }
     }
