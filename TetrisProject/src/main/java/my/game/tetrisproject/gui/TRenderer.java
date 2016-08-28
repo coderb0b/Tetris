@@ -17,7 +17,7 @@ public class TRenderer extends JPanel implements Updater {
     public TRenderer(Game peli) {
         this.board = peli.getBoard();
         this.game = peli;
-        
+
     }
 
     @Override
@@ -29,16 +29,19 @@ public class TRenderer extends JPanel implements Updater {
         drawBoard(g);
     }
 
-    private void drawBoard(Graphics g) {        
+    private void drawBoard(Graphics g) {
         for (int i = 0; i < board.getWidth(); i++) {
             for (int j = 0; j < board.getHeight(); j++) {
                 //piirretään Tetrominot tällä.. Kesken..
                 char shape = this.board.getShapeFromBoard(i, j);
-                if (shape != 'X') {
-                    g.setColor(Color.CYAN);
+                Block b = this.board.getStationaryBlock(i, j);
+                if (shape == 'F') {
+                    g.setColor(board.getCurrentTetro().getBlocks().get(0).getColor());
                     g.fillRect(i * scale + 1, j * scale + 1, scale, scale);
-                    
 
+                } else if (b != null) {
+                    g.setColor(b.getColor());
+                    g.fillRect(i * scale + 1, j * scale + 1, scale, scale);
                 }
             }
         }
@@ -47,7 +50,7 @@ public class TRenderer extends JPanel implements Updater {
             for (Block b : board.getCurrentTetro().getBlocks()) {
                 int x = board.getCurrentTetro().getTetroX() + b.getX();
                 int y = board.getCurrentTetro().getTetroY() - b.getY();
-                g.setColor(Color.CYAN);
+                g.setColor(b.getColor());
                 g.fillRect(x * scale + 1, y * scale + 1, scale, scale);
             }
         }

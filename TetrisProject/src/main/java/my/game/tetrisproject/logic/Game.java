@@ -37,7 +37,8 @@ public class Game implements ActionListener {
     }
 
     /**
-     *Asetetaan Gamelle piirtoalusta, jotta tuolle voidaan antaa päivityskäskyjä
+     * Asetetaan Gamelle piirtoalusta, jotta tuolle voidaan antaa
+     * päivityskäskyjä
      */
     public void setUpdater(Updater updateBoard) {
         this.updateBoard = updateBoard;
@@ -78,7 +79,6 @@ public class Game implements ActionListener {
 
         //Tässä kohtaa logiikkaa pitäisi tehdä updateBoard.update();
 //        updateBoard.update();
-
         return true;
 
     }
@@ -102,6 +102,7 @@ public class Game implements ActionListener {
         }
         this.board.isFallingFinnished = true;
         this.board.addToBoard();
+        updateBoard.update();
     }
 
     /**
@@ -111,7 +112,7 @@ public class Game implements ActionListener {
         if (tryMove(this.board.getCurrentTetro().getTetroX(), this.board.getCurrentTetro().getTetroY() + 1)) {
             this.board.addToBoard();
             updateBoard.update();
-        } else{
+        } else {
             this.board.isFallingFinnished = true;
             this.board.addToBoard();
             updateBoard.update();

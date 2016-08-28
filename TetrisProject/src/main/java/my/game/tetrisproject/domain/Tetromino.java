@@ -1,5 +1,6 @@
 package my.game.tetrisproject.domain;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import my.game.tetrisproject.gui.Direction;
 
@@ -78,7 +79,7 @@ public class Tetromino {
         this.blocks.clear();
     }
 
-    private Block createBlock(int x, int y, char color) {
+    private Block createBlock(int x, int y, Color color) {
         Block block = new Block(x, y, color);
         return block;
     }
@@ -87,55 +88,55 @@ public class Tetromino {
         emptyBlocks();
         this.shape = 'I';
         //Käytetään toistaiseksi värille vain kirjainta
-        blocks.add(createBlock(0, -1, 'Y'));
-        blocks.add(createBlock(0, 0, 'Y'));
-        blocks.add(createBlock(0, 1, 'Y'));
-        blocks.add(createBlock(0, 2, 'Y'));
+        blocks.add(createBlock(0, -1, Color.YELLOW));
+        blocks.add(createBlock(0, 0, Color.YELLOW));
+        blocks.add(createBlock(0, 1, Color.YELLOW));
+        blocks.add(createBlock(0, 2, Color.YELLOW));
     }
 
     private void tetrominoL() {
         emptyBlocks();
         this.shape = 'L';
-        blocks.add(createBlock(-1, -1, 'B'));
-        blocks.add(createBlock(0, -1, 'B'));
-        blocks.add(createBlock(0, 0, 'B'));
-        blocks.add(createBlock(0, 1, 'B'));
+        blocks.add(createBlock(-1, -1, Color.BLUE));
+        blocks.add(createBlock(0, -1, Color.BLUE));
+        blocks.add(createBlock(0, 0, Color.BLUE));
+        blocks.add(createBlock(0, 1, Color.BLUE));
     }
 
     private void tetrominoZ() {
         emptyBlocks();
         this.shape = 'Z';
-        blocks.add(createBlock(0, -1, 'R'));
-        blocks.add(createBlock(0, 0, 'R'));
-        blocks.add(createBlock(-1, 0, 'R'));
-        blocks.add(createBlock(-1, 1, 'R'));
+        blocks.add(createBlock(0, -1, Color.RED));
+        blocks.add(createBlock(0, 0, Color.RED));
+        blocks.add(createBlock(-1, 0, Color.RED));
+        blocks.add(createBlock(-1, 1, Color.RED));
     }
 
     private void tetrominoS() {
         emptyBlocks();
         this.shape = 'S';
-        blocks.add(createBlock(0, -1, 'G'));
-        blocks.add(createBlock(0, 0, 'G'));
-        blocks.add(createBlock(1, 0, 'G'));
-        blocks.add(createBlock(1, 1, 'G'));
+        blocks.add(createBlock(0, -1, Color.GREEN));
+        blocks.add(createBlock(0, 0, Color.GREEN));
+        blocks.add(createBlock(1, 0, Color.GREEN));
+        blocks.add(createBlock(1, 1, Color.GREEN));
     }
 
     private void tetrominoT() {
         emptyBlocks();
         this.shape = 'T';
-        blocks.add(createBlock(-1, 0, 'V'));
-        blocks.add(createBlock(0, 0, 'V'));
-        blocks.add(createBlock(1, 0, 'V'));
-        blocks.add(createBlock(0, 1, 'V'));
+        blocks.add(createBlock(-1, 0, Color.MAGENTA));
+        blocks.add(createBlock(0, 0, Color.MAGENTA));
+        blocks.add(createBlock(1, 0, Color.MAGENTA));
+        blocks.add(createBlock(0, 1, Color.MAGENTA));
     }
 
     private void tetrominoO() {
         emptyBlocks();
         this.shape = 'O';
-        blocks.add(createBlock(0, 0, 'M'));
-        blocks.add(createBlock(1, 0, 'M'));
-        blocks.add(createBlock(0, 1, 'M'));
-        blocks.add(createBlock(1, 1, 'M'));
+        blocks.add(createBlock(0, 0, Color.CYAN));
+        blocks.add(createBlock(1, 0, Color.CYAN));
+        blocks.add(createBlock(0, 1, Color.CYAN));
+        blocks.add(createBlock(1, 1, Color.CYAN));
     }
 
     private void tetrominoX() {

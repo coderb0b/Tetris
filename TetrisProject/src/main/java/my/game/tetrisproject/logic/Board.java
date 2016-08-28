@@ -12,6 +12,7 @@ public class Board {
 
     // Boardin sisältämät muodot tietyissä koordinaateissa
     private char[][] boardCoords = null;
+    private Block[][] stationaryBlocks = null;
 
     private final int width;
     private final int height;
@@ -22,10 +23,10 @@ public class Board {
 
     boolean isFallingFinnished = false;
 
-    
     public Board(int height, int width) {
         this.height = height;
         this.width = width;
+        this.stationaryBlocks = new Block[height][width];
         this.boardCoords = new char[height][width]; //Standard size 22 X 10 for Tetris
         resetBoard(); //luodaan Board tyhjillä muodoilla
         newPiece(); //luodaan uusi random Tetromino        
@@ -39,9 +40,14 @@ public class Board {
         return boardCoords[y][x];
     }
 
+    public Block getStationaryBlock(int x, int y) {
+        return stationaryBlocks[y][x];
+    }
+
     /**
      * Palautetaan laudalla aktiivinen Tetromino
-     * @return 
+     *
+     * @return
      */
     public Tetromino getCurrentTetro() {
         return this.current;
@@ -92,7 +98,9 @@ public class Board {
     private void clearFallingStatus() {
         for (int i = 0; i < this.boardCoords.length; i++) {
             for (int j = 0; j < this.boardCoords[i].length; j++) {
-                if (getShapeFromBoard(j, i) == 'F') {
+                if (isFallingFinnished && getShapeFromBoard(j, i) == 'F') {
+                    this.boardCoords[i][j] = 'X';
+                } else if (!isFallingFinnished && getShapeFromBoard(j, i) == 'F') {
                     this.boardCoords[i][j] = 'X';
                 }
             }
@@ -116,8 +124,6 @@ public class Board {
 
      }
      */
-    
-    
     /**
      * Kiinnitetään tetromino laudalle
      */
@@ -128,7 +134,9 @@ public class Board {
             int y = this.current.getTetroY() - b.getY();
             if (isFallingFinnished) {
                 boardCoords[y][x] = this.current.getShape();
+                stationaryBlocks[y][x] = b;
             } else {
+                clearFallingStatus();
                 boardCoords[y][x] = 'F';
             }
 

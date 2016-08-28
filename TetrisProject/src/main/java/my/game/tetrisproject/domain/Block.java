@@ -3,14 +3,17 @@
  */
 package my.game.tetrisproject.domain;
 
+import java.awt.Color;
+
 public class Block {
 
      
     private int x;
     private int y;
-    private char color;
+    //private char color;
+    private Color color;
 
-    public Block(int x, int y, char color) {
+    public Block(int x, int y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -32,11 +35,11 @@ public class Block {
         this.y = y;
     }
 
-    public char getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(char color) {
+    public void setColor(Color color) {
         this.color = color;
     }
     
