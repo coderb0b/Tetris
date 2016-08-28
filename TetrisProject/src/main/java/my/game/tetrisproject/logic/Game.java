@@ -1,19 +1,44 @@
-/*
-
- */
 package my.game.tetrisproject.logic;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import my.game.tetrisproject.gui.Updater;
 
-public class Game {
+/**
+ * Luokka sisältää palojen siirtämiseen liittyvän logiikan ja peli-luupin.
+ */
+public class Game implements ActionListener {
 
     private Board board;
     private Updater updateBoard;
+    private boolean gameStarted = false;
+    private Timer timer; //Swing ajastin, jolla lähetetään ActionEventtejä.
 
     public Game() {
         this.board = new Board(22, 10);
+        timer = new Timer(500, this); //lähetetään ActionEventtejä 0,5 sekunnin välein.
+        start();
     }
 
+    public void start() {
+        gameStarted = true;
+        timer.start(); //Ajastin käyntiin -> alkaa lähettämään ActionEventtejä.
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (board.isFallingFinnished) {
+            board.isFallingFinnished = false;
+            board.newPiece();
+        } else {
+            moveOneDown();
+        }
+    }
+
+    /**
+     *Asetetaan Gamelle piirtoalusta, jotta tuolle voidaan antaa päivityskäskyjä
+     */
     public void setUpdater(Updater updateBoard) {
         this.updateBoard = updateBoard;
     }
@@ -23,7 +48,7 @@ public class Game {
     }
 
     /**
-     * Testataan onko siirto mahdollista.
+     * Testataan onko haluttu siirto mahdollinen.
      *
      * @param nextX mihin ruutuun yritetään siirtyä x-koordinaatti
      * @param nextY mihin ruutuun yritetään siirtyä y-koordinaatti
@@ -39,28 +64,28 @@ public class Game {
                 return false;
             }
 
-           //System.out.println("siirrytään x  " + x);
+            //System.out.println("siirrytään x  " + x);
             //System.out.println("siirrytään y  " + y);
             if (this.board.getShapeFromBoard(x, y) != 'X' && this.board.getShapeFromBoard(x, y) != 'F') {
 
                 return false;
             }
         }
-        
 
         //this.board.newPiece();
         this.board.getCurrentTetro().setTetroX(nextX);
         this.board.getCurrentTetro().setTetroY(nextY);
-        
+
         //Tässä kohtaa logiikkaa pitäisi tehdä updateBoard.update();
-        
+//        updateBoard.update();
 
         return true;
 
     }
 
     /**
-     * Siirretään laudan aktiivista tetrominoa rivikerrallaan alaspäin, kunnes pohja tulee vastaan tai mahdollisesti muita palikoita.
+     * Siirretään laudan aktiivista tetrominoa rivikerrallaan alaspäin, kunnes
+     * pohja tulee vastaan tai mahdollisesti muita palikoita.
      */
     public void moveDown() {
         int nextY = this.board.getCurrentTetro().getTetroY();
@@ -85,8 +110,11 @@ public class Game {
     public void moveOneDown() {
         if (tryMove(this.board.getCurrentTetro().getTetroX(), this.board.getCurrentTetro().getTetroY() + 1)) {
             this.board.addToBoard();
-            
-
+            updateBoard.update();
+        } else{
+            this.board.isFallingFinnished = true;
+            this.board.addToBoard();
+            updateBoard.update();
         }
 
     }

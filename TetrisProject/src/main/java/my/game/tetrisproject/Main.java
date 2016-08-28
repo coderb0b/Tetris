@@ -19,7 +19,7 @@ public class Main {
         Game peli = new Game();
         
         TRenderer r = new TRenderer(peli);
-        
+        peli.setUpdater(r);
         
         Ui UserInterface = new Ui(r);
         UserInterface.run();

@@ -3,16 +3,10 @@ package my.game.tetrisproject.gui;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import my.game.tetrisproject.Tetris;
-import my.game.tetrisproject.logic.Board;
-import my.game.tetrisproject.logic.Game;
 
 public class Ui implements Runnable {
 
     private JFrame frame;
-    //private Tetris tetris;
-    private Game game;
-    private Board board;
     private TRenderer renderer;
 
     public Ui(TRenderer renderer) {
@@ -31,8 +25,12 @@ public class Ui implements Runnable {
 
     private void createComponents() {
         this.frame.getContentPane().add(this.renderer);
-        
-        
+
     }
 
+/*    
+    public Updater getUpdater() {
+        return this.renderer;
+    }
+*/
 }

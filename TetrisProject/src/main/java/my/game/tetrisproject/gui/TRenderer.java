@@ -29,14 +29,7 @@ public class TRenderer extends JPanel implements Updater {
         drawBoard(g);
     }
 
-    private void drawBoard(Graphics g) {
-        /* 
-         for (int i = 0; i < this.board.getBoard(); i++) {
-            
-         }
-         */
-
-        //g.drawLine(200, 100, 100, 300);
+    private void drawBoard(Graphics g) {        
         for (int i = 0; i < board.getWidth(); i++) {
             for (int j = 0; j < board.getHeight(); j++) {
                 //piirretään Tetrominot tällä.. Kesken..

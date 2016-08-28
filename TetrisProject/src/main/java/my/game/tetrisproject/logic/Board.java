@@ -5,9 +5,11 @@ import java.util.Random;
 import my.game.tetrisproject.domain.Block;
 import my.game.tetrisproject.domain.Tetromino;
 
+/**
+ * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta
+ */
 public class Board {
 
-    //*private char[] boardBlocks;
     // Boardin sisältämät muodot tietyissä koordinaateissa
     private char[][] boardCoords = null;
 
@@ -19,15 +21,12 @@ public class Board {
     int curY = 0; //Tetromino palan y-koordinaatti.
 
     boolean isFallingFinnished = false;
-    //boolean isFallingStarted = false;
 
+    
     public Board(int height, int width) {
         this.height = height;
         this.width = width;
-
-        //this.boardBlocks = new Block[height][width]; //Standard size 22 X 10
-        //*this.boardBlocks = new char[width * height];
-        this.boardCoords = new char[height][width];
+        this.boardCoords = new char[height][width]; //Standard size 22 X 10 for Tetris
         resetBoard(); //luodaan Board tyhjillä muodoilla
         newPiece(); //luodaan uusi random Tetromino        
 
@@ -40,6 +39,10 @@ public class Board {
         return boardCoords[y][x];
     }
 
+    /**
+     * Palautetaan laudalla aktiivinen Tetromino
+     * @return 
+     */
     public Tetromino getCurrentTetro() {
         return this.current;
     }
@@ -113,8 +116,10 @@ public class Board {
 
      }
      */
+    
+    
     /**
-     * Pudotetaan tetromino laudalle
+     * Kiinnitetään tetromino laudalle
      */
     public void addToBoard() {
 
