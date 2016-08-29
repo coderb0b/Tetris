@@ -12,12 +12,16 @@ public class TRenderer extends JPanel implements Updater {
 
     private Board board;
     private Game game;
-    private int scale = 10;
+    private int scale = 20;
 
     public TRenderer(Game peli) {
         this.board = peli.getBoard();
         this.game = peli;
 
+    }
+    
+    public Game getGame(){
+        return this.game;
     }
 
     @Override

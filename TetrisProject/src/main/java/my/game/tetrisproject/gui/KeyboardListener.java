@@ -3,13 +3,14 @@ package my.game.tetrisproject.gui;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import my.game.tetrisproject.domain.Tetromino;
+import my.game.tetrisproject.logic.Game;
 
 public class KeyboardListener implements KeyListener {
 
-    private final Tetromino tetro;
+    private final Game game;
 
-    public KeyboardListener(Tetromino tetro) {
-        this.tetro = tetro;
+    public KeyboardListener(Game game) {
+        this.game = game;
     }
 
     @Override
@@ -19,14 +20,21 @@ public class KeyboardListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            this.tetro.setDir(Direction.UP);
+        Tetromino active = game.getBoard().getCurrentTetro();
+        
+        
+        if (e.getKeyCode() == KeyEvent.VK_UP) {            
+            active.rotateLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            this.tetro.setDir(Direction.DOWN);
+            active.rotateRight();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            this.tetro.setDir(Direction.RIGHT);
+            this.game.tryMove(active.getTetroX() + 1, active.getTetroY());
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            this.tetro.setDir(Direction.LEFT);
+            this.game.tryMove(active.getTetroX() - 1, active.getTetroY());
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            this.game.moveDown();
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
+            this.game.moveOneDown();
         }
     }
 

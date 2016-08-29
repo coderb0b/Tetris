@@ -65,11 +65,18 @@ public class Board {
         return this.boardCoords;
     }
 
-    public void newPiece() {
+    /**
+     * Luodaan uusi random Tetromino
+     */
+    public boolean newPiece() {
+        //Jos aloitusruudussa on kiinnitetty block, niin peli on loppu.
+        if (this.stationaryBlocks[0][3] != null) {
+            return false;
+        }
+        
         String muodot = "ILZSTO";
         Random r = new Random();
-        this.current = new Tetromino(muodot.charAt(r.nextInt(5)));
-        //this.current = new Tetromino('I');
+        this.current = new Tetromino(muodot.charAt(r.nextInt(6)));
         this.isFallingFinnished = false;
 
         //minY Tetrominon pienin y-koordinaatin arvo suhteessa itseensä
@@ -81,6 +88,9 @@ public class Board {
         this.current.setTetroX(width / 3);
         //this.current.setTetroY(height - 1 + minY);
         this.current.setTetroY(0 + 1 - minY);
+        
+        
+        return true;
     }
 
     /**
@@ -104,6 +114,33 @@ public class Board {
                     this.boardCoords[i][j] = 'X';
                 }
             }
+        }
+
+    }
+
+    private void removeLine() {
+
+        for (int i = this.height - 1; i > 0; i--) {
+            //Oletetaan rivin olevan täysi
+            boolean lineIsFull = true;
+
+            for (int j = 0; j < this.width; j++) {
+                if (getShapeFromBoard(j, i) == 'X') {
+                    lineIsFull = false;
+                    break;
+                }
+            }
+            if (lineIsFull) {
+
+                for (int k = 0; k < this.width; k++) {
+                    stationaryBlocks[i][k] = stationaryBlocks[i - 1][k];
+                    stationaryBlocks[i - 1][k] = null;
+                    boardCoords[i][k] = getShapeFromBoard(k, i - 1);
+                    boardCoords[i - 1][k] = 'X';
+                }
+                removeLine();
+            }
+
         }
 
     }
@@ -143,6 +180,7 @@ public class Board {
         }
         if (isFallingFinnished) {
             clearFallingStatus();
+            removeLine();
             newPiece();
         }
     }

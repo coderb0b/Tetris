@@ -3,6 +3,7 @@ package my.game.tetrisproject.logic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
 import my.game.tetrisproject.gui.Updater;
 
 /**
@@ -31,6 +32,9 @@ public class Game implements ActionListener {
         if (board.isFallingFinnished) {
             board.isFallingFinnished = false;
             board.newPiece();
+            if (!board.newPiece()) {
+                timer.stop();
+            }
         } else {
             moveOneDown();
         }
@@ -73,12 +77,9 @@ public class Game implements ActionListener {
             }
         }
 
-        //this.board.newPiece();
         this.board.getCurrentTetro().setTetroX(nextX);
         this.board.getCurrentTetro().setTetroY(nextY);
 
-        //Tässä kohtaa logiikkaa pitäisi tehdä updateBoard.update();
-//        updateBoard.update();
         return true;
 
     }

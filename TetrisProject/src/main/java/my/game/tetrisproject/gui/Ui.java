@@ -16,7 +16,7 @@ public class Ui implements Runnable {
     @Override
     public void run() {
         this.frame = new JFrame("Tetris");
-        this.frame.setPreferredSize(new Dimension(500, 400));
+        this.frame.setPreferredSize(new Dimension(400, 500));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createComponents();
         this.frame.pack();
@@ -25,6 +25,9 @@ public class Ui implements Runnable {
 
     private void createComponents() {
         this.frame.getContentPane().add(this.renderer);
+        
+        KeyboardListener keysPressed = new KeyboardListener(this.renderer.getGame());
+        this.frame.addKeyListener(keysPressed);
 
     }
 

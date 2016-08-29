@@ -8,10 +8,8 @@ public class Tetromino {
 
     private ArrayList<Block> blocks;
     private char shape;
-    private Direction direction;
     private int tetroX;
     private int tetroY;
-    
 
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
@@ -19,11 +17,8 @@ public class Tetromino {
 
         this.tetroX = 0;
         this.tetroY = 0;
-        this.direction = direction.DOWN;
 
     }
-    
-    
 
     public void setTetrominoShape(char shape) {
         switch (shape) {
@@ -51,10 +46,6 @@ public class Tetromino {
         }
     }
 
-    public Direction getDir() {
-        return this.direction;
-    }
-
     public int getTetroX() {
         return this.tetroX;
     }
@@ -62,17 +53,13 @@ public class Tetromino {
     public int getTetroY() {
         return this.tetroY;
     }
-    
+
     public void setTetroX(int x) {
         this.tetroX = x;
     }
 
     public void setTetroY(int y) {
         this.tetroY = y;
-    }
-
-    public Direction setDir(Direction newDir) {
-        return this.direction = newDir;
     }
 
     private void emptyBlocks() {
@@ -87,7 +74,6 @@ public class Tetromino {
     private void tetrominoI() {
         emptyBlocks();
         this.shape = 'I';
-        //Käytetään toistaiseksi värille vain kirjainta
         blocks.add(createBlock(0, -1, Color.YELLOW));
         blocks.add(createBlock(0, 0, Color.YELLOW));
         blocks.add(createBlock(0, 1, Color.YELLOW));
@@ -197,10 +183,10 @@ public class Tetromino {
     public char getShape() {
         return this.shape;
     }
-    
+
     public void down() {
         for (int i = 0; i < this.blocks.size(); i++) {
-            
+
         }
     }
 
