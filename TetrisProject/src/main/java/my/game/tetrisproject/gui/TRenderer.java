@@ -7,8 +7,10 @@ import my.game.tetrisproject.domain.Block;
 import my.game.tetrisproject.logic.Board;
 import my.game.tetrisproject.logic.Game;
 
+/**
+ *Piirtoalustaluokka vastaa piirrettävistä muodoista.
+ */
 public class TRenderer extends JPanel implements Updater {
-    //Piirtoalusta
 
     private Board board;
     private Game game;
@@ -19,14 +21,16 @@ public class TRenderer extends JPanel implements Updater {
         this.game = peli;
 
     }
-    
-    public Game getGame(){
+
+    public Game getGame() {
         return this.game;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        //Pelilaudan kehys
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, board.getWidth() * this.scale, board.getHeight() * this.scale);
 
@@ -36,7 +40,7 @@ public class TRenderer extends JPanel implements Updater {
     private void drawBoard(Graphics g) {
         for (int i = 0; i < board.getWidth(); i++) {
             for (int j = 0; j < board.getHeight(); j++) {
-                //piirretään Tetrominot tällä.. Kesken..
+                //piirretään aktiiviset Tetrominot tällä.. Kesken..
                 char shape = this.board.getShapeFromBoard(i, j);
                 Block b = this.board.getStationaryBlock(i, j);
                 if (shape == 'F') {
@@ -50,6 +54,7 @@ public class TRenderer extends JPanel implements Updater {
             }
         }
 
+        //piirretään paikallaan olevat palikat
         if (board.getCurrentTetro().getShape() != 'X') {
             for (Block b : board.getCurrentTetro().getBlocks()) {
                 int x = board.getCurrentTetro().getTetroX() + b.getX();
@@ -60,6 +65,9 @@ public class TRenderer extends JPanel implements Updater {
         }
     }
 
+    /**
+     * Päivitetään näkymää, kutsutaan peliluupissa
+     */
     @Override
     public void update() {
         this.repaint();

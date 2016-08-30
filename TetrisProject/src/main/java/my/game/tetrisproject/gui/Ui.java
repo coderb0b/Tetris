@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+/**
+ * Käyttöliittymäluokka
+ */
 public class Ui implements Runnable {
 
     private JFrame frame;
@@ -25,15 +28,11 @@ public class Ui implements Runnable {
 
     private void createComponents() {
         this.frame.getContentPane().add(this.renderer);
-        
+
+        //lisätään frameen näppäimistönkuuntelija.
         KeyboardListener keysPressed = new KeyboardListener(this.renderer.getGame());
         this.frame.addKeyListener(keysPressed);
 
     }
 
-/*    
-    public Updater getUpdater() {
-        return this.renderer;
-    }
-*/
 }

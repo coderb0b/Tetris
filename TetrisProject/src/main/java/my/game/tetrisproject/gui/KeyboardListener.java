@@ -5,6 +5,10 @@ import java.awt.event.KeyListener;
 import my.game.tetrisproject.domain.Tetromino;
 import my.game.tetrisproject.logic.Game;
 
+/**
+ * Luokka kuuntelee näppäimistön komentoja ja käskyttää näiden perusteella
+ * peliä ja tetrominoa.
+ */
 public class KeyboardListener implements KeyListener {
 
     private final Game game;

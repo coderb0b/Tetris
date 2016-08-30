@@ -1,17 +1,17 @@
 package my.game.tetrisproject.logic;
 
-import java.util.Arrays;
 import java.util.Random;
 import my.game.tetrisproject.domain.Block;
 import my.game.tetrisproject.domain.Tetromino;
 
 /**
- * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta
+ * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta sekä palojen liikuttamisesta.
  */
 public class Board {
 
-    // Boardin sisältämät muodot tietyissä koordinaateissa
+    //Boardin sisältämät muodot tietyissä koordinaateissa
     private char[][] boardCoords = null;
+    //Perille tulleet palikat
     private Block[][] stationaryBlocks = null;
 
     private final int width;
@@ -73,7 +73,7 @@ public class Board {
         if (this.stationaryBlocks[0][3] != null) {
             return false;
         }
-        
+
         String muodot = "ILZSTO";
         Random r = new Random();
         this.current = new Tetromino(muodot.charAt(r.nextInt(6)));
@@ -88,8 +88,7 @@ public class Board {
         this.current.setTetroX(width / 3);
         //this.current.setTetroY(height - 1 + minY);
         this.current.setTetroY(0 + 1 - minY);
-        
-        
+
         return true;
     }
 
@@ -105,6 +104,9 @@ public class Board {
 
     }
 
+    /**
+     * Laudalta poistetaan aktiiviset palikat
+     */
     private void clearFallingStatus() {
         for (int i = 0; i < this.boardCoords.length; i++) {
             for (int j = 0; j < this.boardCoords[i].length; j++) {
@@ -145,22 +147,6 @@ public class Board {
 
     }
 
-    /*
-     public void addToBoard() {
-     //isFallingStarted = false;
-
-     //int x = t.getBlocks().get(i).getX();
-     //int y = t.getBlocks().get(i).getY();
-     for (int i = 0; i < this.current.getBlocks().size(); i++) {
-            
-     int x = curX + this.current.getBlocks().get(i).getX();
-     int y = curY - this.current.getBlocks().get(i).getY();
-
-     this.boardBlocks[y * width + x] = this.current.getShape();
-     }
-
-     }
-     */
     /**
      * Kiinnitetään tetromino laudalle
      */

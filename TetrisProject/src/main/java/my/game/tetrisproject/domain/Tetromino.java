@@ -2,12 +2,17 @@ package my.game.tetrisproject.domain;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import my.game.tetrisproject.gui.Direction;
 
+/**
+ * Tetromino luo omat palanasa ja luokka sisältää myös kiertoihin liittyvän logiikan. 
+ */
 public class Tetromino {
 
+    //Tetrominon sisältämät palikat
     private ArrayList<Block> blocks;
     private char shape;
+
+//Tetrominon koordinaatit pelilaudalla.
     private int tetroX;
     private int tetroY;
 
@@ -182,12 +187,6 @@ public class Tetromino {
 
     public char getShape() {
         return this.shape;
-    }
-
-    public void down() {
-        for (int i = 0; i < this.blocks.size(); i++) {
-
-        }
     }
 
 }

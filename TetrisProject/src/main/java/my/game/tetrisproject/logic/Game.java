@@ -27,6 +27,10 @@ public class Game implements ActionListener {
         timer.start(); //Ajastin käyntiin -> alkaa lähettämään ActionEventtejä.
     }
 
+    /**
+     * Suoritetaan timerissä määritetyin väliajoin
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (board.isFallingFinnished) {
@@ -48,6 +52,9 @@ public class Game implements ActionListener {
         this.updateBoard = updateBoard;
     }
 
+    /**
+     * Palautetaan lauta. 
+     */
     public Board getBoard() {
         return this.board;
     }
@@ -86,7 +93,8 @@ public class Game implements ActionListener {
 
     /**
      * Siirretään laudan aktiivista tetrominoa rivikerrallaan alaspäin, kunnes
-     * pohja tulee vastaan tai mahdollisesti muita palikoita.
+     * pohja tulee vastaan tai mahdollisesti muita palikoita. Pala kiinnitetään lautaan, 
+     * kun liikkuminen ei enää mahdollista
      */
     public void moveDown() {
         int nextY = this.board.getCurrentTetro().getTetroY();
