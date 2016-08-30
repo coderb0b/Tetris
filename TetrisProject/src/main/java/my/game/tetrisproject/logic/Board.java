@@ -5,7 +5,8 @@ import my.game.tetrisproject.domain.Block;
 import my.game.tetrisproject.domain.Tetromino;
 
 /**
- * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta sekä palojen liikuttamisesta.
+ * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta sekä palojen
+ * liikuttamisesta.
  */
 public class Board {
 
@@ -135,10 +136,14 @@ public class Board {
             if (lineIsFull) {
 
                 for (int k = 0; k < this.width; k++) {
-                    stationaryBlocks[i][k] = stationaryBlocks[i - 1][k];
-                    stationaryBlocks[i - 1][k] = null;
-                    boardCoords[i][k] = getShapeFromBoard(k, i - 1);
-                    boardCoords[i - 1][k] = 'X';
+                    for (int korkeus = i; korkeus > 0; korkeus--) {
+                        stationaryBlocks[korkeus][k] = stationaryBlocks[korkeus - 1][k];
+                        stationaryBlocks[korkeus - 1][k] = null;
+                        boardCoords[korkeus][k] = getShapeFromBoard(k, korkeus - 1);
+                        boardCoords[korkeus - 1][k] = 'X';
+
+                    }
+
                 }
                 removeLine();
             }
