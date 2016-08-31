@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
- * Tetromino luo omat palanasa ja luokka sisältää myös kiertoihin liittyvän logiikan. 
+ * Tetromino luo omat palanasa ja luokka sisältää myös kiertoihin liittyvän
+ * logiikan.
  */
 public class Tetromino {
 
     //Tetrominon sisältämät palikat
     private ArrayList<Block> blocks;
     private char shape;
-
 //Tetrominon koordinaatit pelilaudalla.
     private int tetroX;
     private int tetroY;
@@ -19,12 +19,15 @@ public class Tetromino {
     public Tetromino(char shape) {
         this.blocks = new ArrayList<Block>();
         setTetrominoShape(shape);
-
         this.tetroX = 0;
         this.tetroY = 0;
-
     }
 
+    /**
+     * Luodaan halutun muotoinen tetromino
+     *
+     * @param shape määrää tetrominon muodon
+     */
     public void setTetrominoShape(char shape) {
         switch (shape) {
             case 'I':
@@ -59,10 +62,20 @@ public class Tetromino {
         return this.tetroY;
     }
 
+    /**
+     * Asettaa tetrominolle x-koordinaatille arvon.
+     *
+     * @param x
+     */
     public void setTetroX(int x) {
         this.tetroX = x;
     }
 
+    /**
+     * Asettaa tetrominolle y-koordinaatille arvon.
+     *
+     * @param y
+     */
     public void setTetroY(int y) {
         this.tetroY = y;
     }
@@ -135,58 +148,52 @@ public class Tetromino {
         this.shape = 'X';
     }
 
+    /**
+     * Palautetaan tetrominon sisältämät blockit.
+     */
     public ArrayList<Block> getBlocks() {
         return this.blocks;
     }
 
+    /**
+     * Kierrä tetrominoa myötäpäivään.
+     */
     public Tetromino rotateRight() {
-
         //ei kierretä neliö Tetrominoa
         if (this.shape == 'O') {
             return this;
         }
-
         int xNew;
         int yNew;
-
         for (int i = 0; i < this.blocks.size(); i++) {
-
             xNew = this.blocks.get(i).getY();
             yNew = -this.blocks.get(i).getX();
-
             this.blocks.get(i).setX(xNew);
             this.blocks.get(i).setY(yNew);
-
         }
-
         return this;
     }
 
+    /**
+     * Kierrä tetrominoa vastapäivään.
+     */
     public Tetromino rotateLeft() {
-
         //ei kierretä neliö Tetrominoa
         if (this.shape == 'O') {
             return this;
         }
-
         int xNew;
         int yNew;
-
         for (int i = 0; i < this.blocks.size(); i++) {
-
             xNew = -this.blocks.get(i).getY();
             yNew = this.blocks.get(i).getX();
-
             this.blocks.get(i).setX(xNew);
             this.blocks.get(i).setY(yNew);
-
         }
-
         return this;
     }
 
     public char getShape() {
         return this.shape;
     }
-
 }

@@ -28,7 +28,7 @@ public class Game implements ActionListener {
     }
 
     /**
-     * Suoritetaan timerissä määritetyin väliajoin
+     * Suoritetaan timerissä määritetyin väliajoin.
      * @param e 
      */
     @Override
@@ -46,7 +46,7 @@ public class Game implements ActionListener {
 
     /**
      * Asetetaan Gamelle piirtoalusta, jotta tuolle voidaan antaa
-     * päivityskäskyjä
+     * päivityskäskyjä.
      */
     public void setUpdater(Updater updateBoard) {
         this.updateBoard = updateBoard;
@@ -94,7 +94,7 @@ public class Game implements ActionListener {
     /**
      * Siirretään laudan aktiivista tetrominoa rivikerrallaan alaspäin, kunnes
      * pohja tulee vastaan tai mahdollisesti muita palikoita. Pala kiinnitetään lautaan, 
-     * kun liikkuminen ei enää mahdollista
+     * kun liikkuminen ei enää mahdollista.
      */
     public void moveDown() {
         int nextY = this.board.getCurrentTetro().getTetroY();

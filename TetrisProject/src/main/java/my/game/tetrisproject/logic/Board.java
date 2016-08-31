@@ -35,18 +35,23 @@ public class Board {
     }
 
     /**
-     * Palautetaan laudan sisältö halutusta koordinaatista
+     * Palautetaan laudan sisältö halutusta koordinaatista.
      */
     public char getShapeFromBoard(int x, int y) {
         return boardCoords[y][x];
     }
 
+    /**
+     * Palauta laudalta block x/y-koordinaateista.
+     * @param x
+     * @param y
+     */
     public Block getStationaryBlock(int x, int y) {
         return stationaryBlocks[y][x];
     }
 
     /**
-     * Palautetaan laudalla aktiivinen Tetromino
+     * Palautetaan laudalla aktiivinen Tetromino.
      *
      * @return
      */
@@ -67,7 +72,7 @@ public class Board {
     }
 
     /**
-     * Luodaan uusi random Tetromino
+     * Luodaan uusi random Tetromino.
      */
     public boolean newPiece() {
         //Jos aloitusruudussa on kiinnitetty block, niin peli on loppu.
@@ -106,7 +111,7 @@ public class Board {
     }
 
     /**
-     * Laudalta poistetaan aktiiviset palikat
+     * Laudalta poistetaan aktiiviset palikat.
      */
     private void clearFallingStatus() {
         for (int i = 0; i < this.boardCoords.length; i++) {
@@ -140,7 +145,7 @@ public class Board {
                         stationaryBlocks[korkeus][k] = stationaryBlocks[korkeus - 1][k];
                         stationaryBlocks[korkeus - 1][k] = null;
                         boardCoords[korkeus][k] = getShapeFromBoard(k, korkeus - 1);
-                        boardCoords[korkeus - 1][k] = 'X';
+                        boardCoords[korkeus  - 1][k] = 'X';
 
                     }
 
@@ -153,7 +158,7 @@ public class Board {
     }
 
     /**
-     * Kiinnitetään tetromino laudalle
+     * Kiinnitetään tetromino laudalle.
      */
     public void addToBoard() {
 

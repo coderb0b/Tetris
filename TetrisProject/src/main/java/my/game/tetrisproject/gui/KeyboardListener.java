@@ -22,6 +22,10 @@ public class KeyboardListener implements KeyListener {
 
     }
 
+    /**
+     * Kuuntelee painettuja näppäinkomentoja.
+     * @param e 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         Tetromino active = game.getBoard().getCurrentTetro();

@@ -2,6 +2,8 @@ package my.game.tetrisproject.logic;
 
 import my.game.tetrisproject.domain.Block;
 import my.game.tetrisproject.domain.Tetromino;
+import my.game.tetrisproject.gui.TRenderer;
+import my.game.tetrisproject.gui.Ui;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,6 +18,7 @@ public class BoardTest {
     private Board board;
     private Tetromino tetro;
     private Game peli;
+    private TRenderer trender;
 
     public BoardTest() {
     }
@@ -32,7 +35,10 @@ public class BoardTest {
     public void setUp() {
         this.peli = new Game();
         this.board = this.peli.getBoard();
+        this.peli.setUpdater(trender);
         this.tetro = new Tetromino('Z');
+        
+        
     }
 
     @Before
@@ -43,7 +49,7 @@ public class BoardTest {
     @After
     public void tearDown() {
     }
-    
+
     private void drawBoard() {
         char b[][] = this.peli.getBoard().getBoardState();
 
@@ -66,60 +72,38 @@ public class BoardTest {
     public void returnCorrectRandomTetro() {
         System.out.println(this.board.getCurrentTetro().getShape());
     }
-/*
-    @Test
-    public void returnBoardState() {
-        this.board.addToBoard();
-        drawBoard();
+    
+     
+     
 
-    }
-*/
     @Test
     public void returnShapeFromCoords() {
 
         this.board.addToBoard();
         char b[][] = this.board.getBoardState();
-        //drawBoard();
 
         System.out.println("Muoto:  " + this.board.getShapeFromBoard(3, 0));
 
     }
-    
-    
-    @Test
-    public void movingDown(){
-        this.board.addToBoard();
-        drawBoard();
-        peli.moveDown();
-        System.out.println("siirto");
-        drawBoard();
-        System.out.println("--------");
-        
-        //this.board.newPiece();
-        this.board.addToBoard();
-        drawBoard();        
-        peli.moveDown();
-        System.out.println("siirto2");
-        drawBoard();
-        
-    }
+
+
     @Ignore
     @Test
-    public void moveOneDown(){
+    public void moveOneDown() {
         this.board.addToBoard();
         drawBoard();
         peli.moveOneDown();
         System.out.println("siirto");
         drawBoard();
         System.out.println("--------");
-/*        
-        this.board.newPiece();
-        this.board.addToBoard();
-        drawBoard();        
-        peli.moveOneDown();
-        System.out.println("siirto2");
-        drawBoard();
-*/        
+        /*        
+         this.board.newPiece();
+         this.board.addToBoard();
+         drawBoard();        
+         peli.moveOneDown();
+         System.out.println("siirto2");
+         drawBoard();
+         */
     }
 
 }

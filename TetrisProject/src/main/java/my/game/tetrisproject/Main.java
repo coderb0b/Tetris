@@ -1,4 +1,3 @@
-
 package my.game.tetrisproject;
 
 //import javax.swing.Renderer;
@@ -8,27 +7,23 @@ import my.game.tetrisproject.gui.Updater;
 import my.game.tetrisproject.logic.Board;
 import my.game.tetrisproject.logic.Game;
 
+/**
+ * Main-luokka.
+ */
 public class Main {
     //ohjelman käynnistävä luokka
-    
-    public static void main(String[] args){
-        
-        
-        
+
+    public static void main(String[] args) {
+
         //Board b = new Board(2, 4);
         Game peli = new Game();
-        
+
         TRenderer r = new TRenderer(peli);
         peli.setUpdater(r);
-        
-        Ui UserInterface = new Ui(r);
-        UserInterface.run();
-        
-        
-        
-        
-        
+
+        Ui userInterface = new Ui(r);
+        userInterface.run();
+
     }
-    
-    
+
 }

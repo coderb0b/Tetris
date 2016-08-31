@@ -1,6 +1,7 @@
 
 package my.game.tetrisproject.domain;
 
+import java.awt.Color;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class BlockTest {
     
-    private final Block block = new Block(2, 3, 'C');
+    private final Block block = new Block(2, 3, Color.GREEN);
     
     public BlockTest() {
     }
@@ -50,9 +51,9 @@ public class BlockTest {
     
     @Test
     public void setCorrectColorToBlock() {
-        block.setColor('B');
+        block.setColor(Color.GREEN);
         
-        assertEquals(block.getColor(), 'B');
+        assertEquals(block.getColor(), Color.GREEN);
         
     }
 
