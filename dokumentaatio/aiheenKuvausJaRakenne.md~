@@ -19,6 +19,6 @@ Pelissä on kolme varsinaista objektiluokkaa Game, Board ja Tetromino. Luokat si
 
 TRenderer luokka on niin sanottu piirtoalusta, joka vastaa ohjelman komponenttien piirtämisestä. Piirrettäviä komponentteja ovat pelilaudan kehys, aktiivinen tetromino sekä paikallaan olevat palat. Peliluuppi kutsuu TRenderer luokan update-metodia, jolloin komponentit piirretään uudestaan.
 
-Käyttöliittymäluokka Ui 
+Ui käyttöliittymäluokan kautta kuunnellaan käyttöliittymään kohdistuvia näppäinten painalluksia. Tätä varten luokassa luodaan KeyboardListener, jolle lisätään Game-luokan olio. Tätä kautta KeyboarListenerin eventit pääsee Game-luuppiin käsiksi.
 
 ![Luokkakaavio](/dokumentaatio/Luokkakaavio_ver3.png)

@@ -22,3 +22,4 @@ TRenderer luokka on niin sanottu piirtoalusta, joka vastaa ohjelman komponenttie
 Ui käyttöliittymäluokan kautta kuunnellaan käyttöliittymään kohdistuvia näppäinten painalluksia. Tätä varten luokassa luodaan KeyboardListener, jolle lisätään Game-luokan olio. Tätä kautta KeyboarListenerin eventit pääsee Game-luuppiin käsiksi.
 
 ![Luokkakaavio](/dokumentaatio/Luokkakaavio_ver3.png)
+![Käynnistys sekvenssi](/dokumentaatio/SetupSeq.png)
