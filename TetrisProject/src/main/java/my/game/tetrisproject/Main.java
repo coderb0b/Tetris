@@ -15,7 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Board b = new Board(2, 4);
         Game peli = new Game();
 
         TRenderer r = new TRenderer(peli);

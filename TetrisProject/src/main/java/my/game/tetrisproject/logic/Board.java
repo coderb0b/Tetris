@@ -6,7 +6,7 @@ import my.game.tetrisproject.domain.Tetromino;
 
 /**
  * Board luokka vastaa lautaan liittyvästä logiikasta ja tilasta sekä palojen
- * liikuttamisesta.
+ * kiinnittämisestä lautaan.
  */
 public class Board {
 
